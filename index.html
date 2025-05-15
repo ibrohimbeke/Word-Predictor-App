@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input, button {
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Word Predictor</h1>
+        
+        <!-- Form to take user input for the prompt -->
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="prompt">Enter your prompt:</label>
+                <input type="text" id="prompt" name="prompt" required placeholder="Type your prompt here">
+            </div>
+            <button type="submit">Generate Text</button>
+        </form>
+
+        <!-- Show the result if available -->
+        {% if result %}
+            <div class="result">
+                <h2>Generated Text:</h2>
+                <p><strong>Prompt:</strong> {{ prompt }}</p>
+                <p><strong>Result:</strong> {{ result }}</p>
+            </div>
+        {% else %}
+            <p class="result">Please enter a prompt and click "Generate Text" to get the result.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
+
